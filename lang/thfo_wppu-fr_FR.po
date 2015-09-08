@@ -1,0 +1,77 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Post Updated\n"
+"POT-Creation-Date: 2015-09-08 19:17+0100\n"
+"PO-Revision-Date: 2015-09-08 19:18+0100\n"
+"Last-Translator: Sebastien SERRE <sebastien@thivinfo.com>\n"
+"Language-Team: Thivinfo <sebastien@thivinfo.com>\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e;_n\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-post-updated.php:60
+msgid "Hello, Many thanx to use this plugin"
+msgstr "Bonjour, Merci beaucoup d'utiliser ce plugin"
+
+#: ../wp-post-updated.php:61
+msgid "If You Enjoy this plugin... encourage me!"
+msgstr "Si vous aimez ce plugin: Encouragez moi!"
+
+#: ../class/thfo_subscriber.php:23
+msgid "No Subscriber at the moment"
+msgstr "Aucun abonné pour le moment"
+
+#: ../class/thfo_subscriber.php:27
+msgid "Subscribers list"
+msgstr "Liste des abonnés"
+
+#: ../class/newsletterwidget.php:70
+msgid "Title:"
+msgstr "Titre:"
+
+#: ../class/thfo_options.php:22 ../class/newsletter.php:66
+msgid "Save"
+msgstr "Enregistrer"
+
+#: ../class/thfo_options.php:30
+msgid "Post type to follow"
+msgstr "Type de contenu à suivre"
+
+#: ../class/thfo_options.php:31
+msgid "Post Type"
+msgstr "Type de contenu"
+
+#: ../class/thfo_options.php:37
+msgid "Please select post type you want to be advised by mail in any update"
+msgstr ""
+"Sélectionnez le type de contenu pour lequel vous souhaitez recevoir des "
+"emails à chaque mise à jour."
+
+#: ../class/newsletter.php:72
+msgid "Send"
+msgstr "Envoyer"
+
+#: ../class/newsletter.php:85
+msgid "Sender"
+msgstr "Expéditeur"
+
+#: ../class/newsletter.php:86
+msgid "Object"
+msgstr "objet"
+
+#: ../class/newsletter.php:87
+msgid "Content"
+msgstr "Contenu"
+
+#: ../class/newsletter.php:96
+msgid "Advise about outgoing parameters."
+msgstr "Renseignez les informations d'envoi de votre mail."
+
+#~ msgid "Send the letter"
+#~ msgstr "Envoyer"

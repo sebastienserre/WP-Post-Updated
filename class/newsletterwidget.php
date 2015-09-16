@@ -14,7 +14,7 @@ class thfo_Newsletter_Widget extends WP_Widget
 
     {
 
-        parent::__construct('thfo_newsletter', 'Newsletter', array('description' => 'Un formulaire d\'inscription à la newsletter.'));
+        parent::__construct('thfo_newsletter', 'WPPU Newsletter', array('description' => 'Un formulaire d\'inscription à la newsletter.'));
         add_shortcode('newsletter', array($this, 'newsletter_shortcode'));
 
     }

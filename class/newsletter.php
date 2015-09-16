@@ -22,12 +22,13 @@ class thfo_Newsletter
         add_action('admin_init', array($this, 'register_settings'));
         add_action('wp_loaded', array($this, 'save_email'));
         add_action('post_updated',array($this,'send_newsletter'));
+        add_action('wp_loaded',array($this,'unsubscribe'));
 
     }
 
-    public static function install(){
+    public static function install() {
         global $wpdb;
-        $wpdb->query("CREATE TABLE IF NOT EXISTS {$wpdb->prefix}thfo_newsletter_email(id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR (255) NOT NULL);");
+        $wpdb->query( "CREATE TABLE IF NOT EXISTS {$wpdb->prefix}thfo_newsletter_email(id INT AUTO_INCREMENT PRIMARY KEY, email VARCHAR (255) NOT NULL);" );
     }
 
     public static function uninstall(){
@@ -67,6 +68,7 @@ class thfo_Newsletter
 
 
         </form>
+
         <form method="post" action="">
             <input type="hidden" name="send_newsletter" value="1"/>
             <?php submit_button(__('Send','thfo_wppu')); ?>
@@ -78,11 +80,13 @@ class thfo_Newsletter
     public function register_settings()
     {
         register_setting('thfo_newsletter_settings', 'thfo_newsletter_sender');
+        register_setting('thfo_newsletter_settings', 'thfo_newsletter_sender_mail');
         register_setting('thfo_newsletter_settings', 'thfo_newsletter_object');
         register_setting('thfo_newsletter_settings', 'thfo_newsletter_content');
 
         add_settings_section('thfo_newsletter_section', 'Paramètres d\'envoi', array($this, 'section_html'), 'thfo_newsletter_settings');
         add_settings_field('thfo_newsletter_sender', __('Sender','thfo_wppu'), array($this, 'sender_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
+        add_settings_field('thfo_newsletter_sender_mail', __('email','thfo_wppu'), array($this, 'sender_mail_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
         add_settings_field('thfo_newsletter_object', __('Object','thfo_wppu'), array($this, 'object_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
         add_settings_field('thfo_newsletter_content', __('Content','thfo_wppu'), array($this, 'content_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
 
@@ -103,28 +107,31 @@ class thfo_Newsletter
         <?php
     }
 
-    public function object_html()
+	public function sender_mail_html()
+	{?>
+		<input type="email" name="thfo_newsletter_sender_mail" value="<?php echo get_option('thfo_newsletter_sender_mail')?>"/>
+		<?php
+	}
+
+
+	public function object_html()
 
     {?>
 
         <input type="text" name="thfo_newsletter_object" value="<?php echo get_option('thfo_newsletter_object')?>"/>
-
         <?php
+
 
     }
 
 
     public function content_html()
 
-    {?>
-
-        <textarea name="thfo_newsletter_content"><?php echo get_option('thfo_newsletter_content')?></textarea>
-
-        <?php
-
+    {
+        wp_editor(get_option('thfo_newsletter_content'),'thfo_newsletter_content' );
     }
-    public function process_action()
 
+    public function process_action()
     {
 
         if (isset($_POST['send_newsletter'])) {
@@ -134,22 +141,47 @@ class thfo_Newsletter
         }
 
     }
+
+
     public function send_newsletter()
     {
-        $post_type =  get_post_type( get_the_ID() );
+        $post_type = get_post_type(get_the_ID());
         $post = get_option('thfo_post_type');
+	    $sender = get_option('thfo_newsletter_sender');
+	    $sender_mail = get_option('thfo_newsletter_sender_mail');
+	    var_dump($sender);
+
         if (isset($post) && $post == $post_type) {
             global $wpdb;
             $recipients = $wpdb->get_results("SELECT email FROM {$wpdb->prefix}thfo_newsletter_email");
-            $object = get_option('thfo_newsletter_object', 'Newsletter');
-            $content = get_option('thfo_newsletter_content', 'Mon contenu');
-            $sender = get_option('thfo_newsletter_sender', 'no-reply@example.com');
-            $header = array('From: ' . $sender);
-
             foreach ($recipients as $_recipient) {
-                $result = wp_mail($_recipient->email, $object, $content, $header);
-            }
+                $object = get_option('thfo_newsletter_object', 'Newsletter');
+                $content = apply_filters('the_content', get_option('thfo_newsletter_content'));
+                $content .= '<p>' . __('To unsubscribe to this mail please follow this link: ', 'thfo_wppu');
+                echo esc_url(home_url('/')) . '<p>';
+                $content .= '<a href="'.home_url('wppu-unsubscribe').'" >'. __('Unsubscribe','thfo_wppu').'</a>';
+                $sender = get_option('thfo_newsletter_sender', 'no-reply@example.com');
+                $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
+	            $headers[] = 'From:'. $sender.'<'.$sender_mail.'>';
+	            //$headers[] = 'From: ' . $sender;
+                $result = wp_mail($_recipient->email, $object, $content, $headers);
+
+                remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
+
+                function set_html_content_type() {
+                    return 'text/html';
+                }
+            }
+        }
+    }
+
+    public function unsubscribe()
+    {
+        if(isset($_GET['mail']))
+        {
+            echo $_GET['mail'];
+            die;
         }
     }
 }

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Post Updated\n"
-"POT-Creation-Date: 2015-09-08 19:17+0100\n"
-"PO-Revision-Date: 2015-09-08 19:18+0100\n"
+"POT-Creation-Date: 2015-09-15 17:23+0100\n"
+"PO-Revision-Date: 2015-09-15 17:23+0100\n"
 "Last-Translator: Sebastien SERRE <sebastien@thivinfo.com>\n"
 "Language-Team: Thivinfo <sebastien@thivinfo.com>\n"
 "Language: fr_FR\n"
@@ -35,43 +35,79 @@ msgstr "Liste des abonnés"
 msgid "Title:"
 msgstr "Titre:"
 
-#: ../class/thfo_options.php:22 ../class/newsletter.php:66
+#: ../class/thfo_options.php:20 ../class/newsletter.php:67
 msgid "Save"
 msgstr "Enregistrer"
 
-#: ../class/thfo_options.php:30
+#: ../class/thfo_options.php:25
+msgid "Create the unsubscribe page"
+msgstr "Créer la page de désinscription"
+
+#: ../class/thfo_options.php:28
+msgid "Create"
+msgstr "Créer"
+
+#: ../class/thfo_options.php:36 ../class/shortcode.php:22
+msgid "unsubscribe"
+msgstr "Désinscription"
+
+#: ../class/thfo_options.php:67
 msgid "Post type to follow"
 msgstr "Type de contenu à suivre"
 
-#: ../class/thfo_options.php:31
+#: ../class/thfo_options.php:68
 msgid "Post Type"
 msgstr "Type de contenu"
 
-#: ../class/thfo_options.php:37
+#: ../class/thfo_options.php:74
 msgid "Please select post type you want to be advised by mail in any update"
 msgstr ""
 "Sélectionnez le type de contenu pour lequel vous souhaitez recevoir des "
 "emails à chaque mise à jour."
 
-#: ../class/newsletter.php:72
+#: ../class/shortcode.php:20
+msgid "Please add your mail"
+msgstr "Saisissez votre email"
+
+#: ../class/shortcode.php:36
+msgid "Your mail adress has been deleted from our database!"
+msgstr "Votre adresse mail a été effacée de notre base de donnée!"
+
+#: ../class/shortcode.php:38
+msgid "Your mail adress isn't in our database!"
+msgstr "Votre adresse mail ne figure pas dans notre base de donnée!"
+
+#: ../class/newsletter.php:74
 msgid "Send"
 msgstr "Envoyer"
 
-#: ../class/newsletter.php:85
+#: ../class/newsletter.php:88
 msgid "Sender"
 msgstr "Expéditeur"
 
-#: ../class/newsletter.php:86
+#: ../class/newsletter.php:89
+msgid "email"
+msgstr "email"
+
+#: ../class/newsletter.php:90
 msgid "Object"
 msgstr "objet"
 
-#: ../class/newsletter.php:87
+#: ../class/newsletter.php:91
 msgid "Content"
 msgstr "Contenu"
 
-#: ../class/newsletter.php:96
+#: ../class/newsletter.php:100
 msgid "Advise about outgoing parameters."
 msgstr "Renseignez les informations d'envoi de votre mail."
+
+#: ../class/newsletter.php:160
+msgid "To unsubscribe to this mail please follow this link: "
+msgstr "Pour vous désinscrire de ce mail, suivez ce lien."
+
+#: ../class/newsletter.php:162
+msgid "Unsubscribe"
+msgstr "Désinscription"
 
 #~ msgid "Send the letter"
 #~ msgstr "Envoyer"

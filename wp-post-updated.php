@@ -16,7 +16,7 @@ Author: Sébastien Serre
 Author URI: http://www.thivinfo.com
 License: GPL2
 Text Domain: thfo_wppu
-Domain Path: /lang
+Domain Path: /languages
 */
 
 class thfo_Plugin
@@ -62,7 +62,7 @@ class thfo_Plugin
 
     public function wppu_load_textdomain()
     {
-        load_plugin_textdomain( 'thfo_wppu', false,dirname( plugin_basename( __FILE__ ) ) . '/lang');
+        load_plugin_textdomain( 'thfo_wppu', false,dirname( plugin_basename( __FILE__ ) ) . '/languages');
     }
 
 

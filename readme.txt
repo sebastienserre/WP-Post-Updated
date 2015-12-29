@@ -6,7 +6,7 @@ Donate link: http://sebastien-serre.fr/dons/
 Tags: update, post, mail, subscription, notifier, status
 Requires at least: 3.9
 Tested up to: 4.3
-Stable tag: 1.1.10
+Stable tag: 1.1.11
 License: GPL V2 or later
 
 == Description ==
@@ -40,6 +40,8 @@ use automatic upgrade
 4. Subscription widget
 
 == Changelog ==
+*1.1.11 code format
+
 *1.1.10 remove page title
 
 *1.1.8 bugfix

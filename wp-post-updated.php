@@ -3,15 +3,7 @@
 Plugin Name: WP Post Updated
 Plugin URI: http://www.thivinfo.com
 Description: Send a mail when a post is updated
-<<<<<<< HEAD
-<<<<<<< HEAD
-Version: 1.1.10
-=======
-Version: 1.1.8
->>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
-=======
-Version: 1.1.8
->>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
+Version: 1.1.11
 Author: Sébastien Serre
 Author URI: http://www.thivinfo.com
 License: GPL2
@@ -27,27 +19,14 @@ class thfo_Plugin
 
     {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
         include_once plugin_dir_path( __FILE__ ).'/class/page_title.php';
->>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
-=======
-        include_once plugin_dir_path( __FILE__ ).'/class/page_title.php';
->>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
         include_once plugin_dir_path(__FILE__).'/class/newsletter.php';
         include_once plugin_dir_path( __FILE__ ).'/class/shortcode.php';
         include_once plugin_dir_path( __FILE__ ).'/class/thfo_options.php';
         include_once plugin_dir_path( __FILE__ ).'/class/thfo_subscriber.php';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
         new thfo_Page_Title();
->>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
-=======
-        new thfo_Page_Title();
->>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
         new thfo_Newsletter();
         new thfo_unsubscribe();
         new thfo_options();

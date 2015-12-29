@@ -17,15 +17,15 @@ class thfo_options
         <form method="post" action="options.php" xmlns="http://www.w3.org/1999/html">
             <?php settings_fields('thfo_options_settings') ?>
             <?php do_settings_sections('thfo_options_settings') ?>
-            <?php submit_button(__('Save','thfo_wppu')) ?>
+            <?php submit_button(__('Save','wp-post-updated')) ?>
         </form>
     <?php }
 
 	public static function create_page() { ?>
-		<h2><?php _e( 'Create the unsubscribe page', 'thfo_wppu' ); ?></h2>
+		<h2><?php _e( 'Create the unsubscribe page', 'wp-post-updated' ); ?></h2>
 		<form method="post" action="#">
 			<input type="hidden" name="create" value="1">
-			<?php submit_button( __( 'Create', 'thfo_wppu' ) ); ?>
+			<?php submit_button( __( 'Create', 'wp-post-updated' ) ); ?>
 		</form>
 		<?php
 		if(isset($_POST['create']) && $_POST['create'] === '1'){
@@ -33,7 +33,7 @@ class thfo_options
 				'ID'                    => '',
 				'post_content'          => '[thfo_unsubscribe_nl]',
 				'post_name'             => 'wppu-unsubscribe',
-				'post_title'            => __('unsubscribe','thfo_wppu'),
+				'post_title'            => __('unsubscribe','wp-post-updated'),
 				'post_status'           => 'publish',
 				'post_type'             => 'page',
 				'post_author'           => '',
@@ -64,14 +64,14 @@ class thfo_options
     public function register_setting(){
         register_setting('thfo_options_settings','thfo_post_type');
 
-        add_settings_section('thfo_option_section', __('Post type to follow','thfo_wppu'), array($this, 'section_html'), 'thfo_options_settings');
-        add_settings_field('thfo_post_type', __('Post Type','thfo_wppu'), array($this,'select_html'), 'thfo_options_settings', 'thfo_option_section');
+        add_settings_section('thfo_option_section', __('Post type to follow','wp-post-updated'), array($this, 'section_html'), 'thfo_options_settings');
+        add_settings_field('thfo_post_type', __('Post Type','wp-post-updated'), array($this,'select_html'), 'thfo_options_settings', 'thfo_option_section');
 
     }
 
     public function section_html()
     { ?>
-        <h2><?php _e('Please select post type you want to be advised by mail in any update', 'thfo_wppu'); ?></h2>
+        <h2><?php _e('Please select post type you want to be advised by mail in any update', 'wp-post-updated'); ?></h2>
        <?php
     }
 

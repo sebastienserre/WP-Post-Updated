@@ -71,7 +71,7 @@ class thfo_Newsletter
 
         <form method="post" action="">
             <input type="hidden" name="send_newsletter" value="1"/>
-            <?php submit_button(__('Send','thfo_wppu')); ?>
+            <?php submit_button(__('Send','wp-post-updated')); ?>
         </form>
 
         <?php
@@ -85,10 +85,10 @@ class thfo_Newsletter
         register_setting('thfo_newsletter_settings', 'thfo_newsletter_content');
 
         add_settings_section('thfo_newsletter_section', 'Paramètres d\'envoi', array($this, 'section_html'), 'thfo_newsletter_settings');
-        add_settings_field('thfo_newsletter_sender', __('Sender','thfo_wppu'), array($this, 'sender_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
-        add_settings_field('thfo_newsletter_sender_mail', __('email','thfo_wppu'), array($this, 'sender_mail_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
-        add_settings_field('thfo_newsletter_object', __('Object','thfo_wppu'), array($this, 'object_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
-        add_settings_field('thfo_newsletter_content', __('Content','thfo_wppu'), array($this, 'content_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
+        add_settings_field('thfo_newsletter_sender', __('Sender','wp-post-updated'), array($this, 'sender_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
+        add_settings_field('thfo_newsletter_sender_mail', __('email','wp-post-updated'), array($this, 'sender_mail_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
+        add_settings_field('thfo_newsletter_object', __('Object','wp-post-updated'), array($this, 'object_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
+        add_settings_field('thfo_newsletter_content', __('Content','wp-post-updated'), array($this, 'content_html'), 'thfo_newsletter_settings', 'thfo_newsletter_section');
 
 
     }
@@ -97,7 +97,7 @@ class thfo_Newsletter
 
     {
 
-        echo '<p>'.__('Advise about outgoing parameters.','thfo_wppu').'</p>';
+        echo '<p>'.__('Advise about outgoing parameters.','wp-post-updated').'</p>';
 
     }
 
@@ -164,9 +164,9 @@ class thfo_Newsletter
             foreach ($recipients as $_recipient) {
                 $object = get_option('thfo_newsletter_object', 'Newsletter');
                 $content = apply_filters('the_content', get_option('thfo_newsletter_content'));
-                $content .= '<p>' . __('To unsubscribe to this mail please follow this link: ', 'thfo_wppu');
+                $content .= '<p>' . __('To unsubscribe to this mail please follow this link: ', 'wp-post-updated');
                 echo esc_url(home_url('/')) . '<p>';
-                $content .= '<a href="'.home_url('wppu-unsubscribe').'" >'. __('Unsubscribe','thfo_wppu').'</a>';
+                $content .= '<a href="'.home_url('wppu-unsubscribe').'" >'. __('Unsubscribe','wp-post-updated').'</a>';
                 $sender = get_option('thfo_newsletter_sender', 'no-reply@example.com');
                 $headers[] = 'Content-Type: text/html; charset=UTF-8';
 

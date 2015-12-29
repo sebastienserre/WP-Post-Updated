@@ -20,11 +20,11 @@ class thfo_subscriber
         global $wpdb;
         $row=$wpdb->get_row("SELECT email FROM {$wpdb->prefix}thfo_newsletter_email");
         if (is_null($row)){
-            echo __('No Subscriber at the moment', 'thfo_wppu');;
+            echo __('No Subscriber at the moment', 'wp-post-updated');;
         }else{
             $data = $wpdb->get_results("SELECT email FROM {$wpdb->prefix}thfo_newsletter_email", ARRAY_A);
             ?>
-            <h2><?php _e('Subscribers list','thfo_wppu'); ?></h2>
+            <h2><?php _e('Subscribers list','wp-post-updated'); ?></h2>
                 <ul>
                 <?php
                 foreach ($data as $datas){

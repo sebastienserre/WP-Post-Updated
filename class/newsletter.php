@@ -150,6 +150,10 @@ class thfo_Newsletter
 	    $sender = get_option('thfo_newsletter_sender');
 	    $sender_mail = get_option('thfo_newsletter_sender_mail');
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+	    var_dump($sender);
+>>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
 =======
 	    var_dump($sender);
 >>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
@@ -185,6 +189,10 @@ class thfo_Newsletter
         {
             echo $_GET['mail'];
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+            die;
+>>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5
 =======
             die;
 >>>>>>> 0b055d4047ae7fe73324f172146346981e0ea0f5

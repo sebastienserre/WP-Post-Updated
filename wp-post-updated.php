@@ -3,7 +3,7 @@
 Plugin Name: WP Post Updated
 Plugin URI: http://www.thivinfo.com
 Description: Send a mail when a post is updated
-Version: 1.1.11
+Version: 1.1.14
 Author: Sébastien Serre
 Author URI: http://www.thivinfo.com
 License: GPL2
@@ -20,13 +20,11 @@ class thfo_Plugin
     {
 
 
-        include_once plugin_dir_path( __FILE__ ).'/class/page_title.php';
         include_once plugin_dir_path(__FILE__).'/class/newsletter.php';
         include_once plugin_dir_path( __FILE__ ).'/class/shortcode.php';
         include_once plugin_dir_path( __FILE__ ).'/class/thfo_options.php';
         include_once plugin_dir_path( __FILE__ ).'/class/thfo_subscriber.php';
 
-        new thfo_Page_Title();
         new thfo_Newsletter();
         new thfo_unsubscribe();
         new thfo_options();

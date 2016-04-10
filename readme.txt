@@ -2,11 +2,11 @@
 
 
 Contributors: sebastien@thivinfo.com
-Donate link: http://sebastien-serre.fr/dons/
+Donate link: https://www.paypal.me/sebastienserre
 Tags: update, post, mail, subscription, notifier, status
 Requires at least: 3.9
-Tested up to: 4.3
-Stable tag: 1.1.11
+Tested up to: 4.5
+Stable tag: 1.1.14
 License: GPL V2 or later
 
 == Description ==
@@ -40,6 +40,10 @@ use automatic upgrade
 4. Subscription widget
 
 == Changelog ==
+*1.1.13 uploading a fatal error is a wrong idea!
+
+*1.1.12 Page title appeared again modificated!
+
 *1.1.11 code format
 
 *1.1.10 remove page title

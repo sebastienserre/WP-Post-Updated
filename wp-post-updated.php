@@ -38,6 +38,7 @@ class thfo_Plugin
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action( 'plugins_loaded', array($this,'wppu_load_textdomain' ));
 	    add_action( 'admin_init', array($this, 'wppu_add_column') );
+	    add_action( 'admin_init', array($this, 'wppu_register_admin_style') );
 
 	    define( 'PLUGIN_VERSION','1.2.0' );
     }
@@ -84,6 +85,10 @@ class thfo_Plugin
         <?php
 
     }
+
+	public function wppu_register_admin_style(){
+		wp_enqueue_style('thfo_mailalert_admin_style', plugins_url( 'assets/css/admin-styles.css',__FILE__ ));
+	}
 
 
 }

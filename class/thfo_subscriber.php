@@ -27,10 +27,9 @@ class thfo_subscriber
 
         if (!is_null($row)){
             $data = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}thfo_newsletter_email", ARRAY_A);
-	        var_dump($data);
             ?>
             <h2><?php _e('Subscribers list','wp-post-updated'); ?></h2>
-	        <table>
+	        <table class="thfo_subscriber">
 		        <tr>
 			        <th><?php _e('Email', 'wp-post-updated') ?></th>
 			        <th><?php _e('Post', 'wp-post-updated') ?></th>

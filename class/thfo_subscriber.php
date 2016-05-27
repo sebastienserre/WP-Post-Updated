@@ -11,6 +11,8 @@ class thfo_subscriber
     public function __construct(){
         //add_action('admin_init', array($this, 'subscriber_list'));
 
+	    add_action('admin_menu', array($this, 'wppu_delete_subscriber'));
+
 
     }
 
@@ -61,6 +63,14 @@ class thfo_subscriber
 
         <?php }
     }
+
+	public function wppu_delete_subscriber(){
+		if (isset($_GET['delete']) && $_GET['delete'] == 'yes'){
+			$id = $_GET['id'];
+			global $wpdb;
+			$wpdb->delete("{$wpdb->prefix}thfo_newsletter_email",array('id' => $id));
+		}
+	}
 
     public static function menu_html(){
         echo '<h1>'.get_admin_page_title().'</h1>';

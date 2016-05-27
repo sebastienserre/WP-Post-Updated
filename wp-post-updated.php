@@ -3,7 +3,7 @@
 Plugin Name: WP Post Updated
 Plugin URI: http://www.thivinfo.com
 Description: Send a mail when a post is updated
-Version: 1.1.14
+Version: 1.2.0
 Author: Sébastien Serre
 Author URI: http://www.thivinfo.com
 License: GPL2
@@ -24,18 +24,33 @@ class thfo_Plugin
         include_once plugin_dir_path( __FILE__ ).'/class/shortcode.php';
         include_once plugin_dir_path( __FILE__ ).'/class/thfo_options.php';
         include_once plugin_dir_path( __FILE__ ).'/class/thfo_subscriber.php';
+        include_once plugin_dir_path( __FILE__ ).'/class/thfo_post_subscription.php';
 
         new thfo_Newsletter();
         new thfo_unsubscribe();
         new thfo_options();
         new thfo_subscriber();
+        new thfo_post_subscription();
 
         register_activation_hook(__FILE__, array('thfo_Newsletter', 'install'));
         register_uninstall_hook(__FILE__, array('thfo_Newsletter', 'uninstall'));
 
         add_action('admin_menu', array($this, 'add_admin_menu'));
         add_action( 'plugins_loaded', array($this,'wppu_load_textdomain' ));
+	    add_action( 'admin_init', array($this, 'wppu_add_column') );
+
+	    define( 'PLUGIN_VERSION','1.2.0' );
     }
+
+	public function wppu_add_column() {
+		global $wpdb;
+		$table_name = $wpdb->prefix . 'thfo_newsletter_email';
+		$row = $wpdb->get_results( "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = '$table_name' AND COLUMN_NAME  = 'post_id' " );
+		if (empty($row)) {
+			$wpdb->query( "ALTER TABLE $table_name ADD post_id INT (10) " );
+		}
+		update_option( 'wp_post_updated_version', PLUGIN_VERSION );
+	}
 
     public function wppu_load_textdomain()
     {

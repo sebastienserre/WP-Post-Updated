@@ -6,7 +6,7 @@ Donate link: https://www.paypal.me/sebastienserre
 Tags: update, post, mail, subscription, notifier, status
 Requires at least: 3.9
 Tested up to: 4.5
-Stable tag: 1.1.14
+Stable tag: 1.2.0
 License: GPL V2 or later
 
 == Description ==
@@ -40,6 +40,7 @@ use automatic upgrade
 4. Subscription widget
 
 == Changelog ==
+* 1.2.0 add a subscrition field by mail on each post
 *1.1.13 uploading a fatal error is a wrong idea!
 
 *1.1.12 Page title appeared again modificated!

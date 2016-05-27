@@ -21,7 +21,8 @@ class thfo_Newsletter
         add_action('admin_menu', array($this, 'add_admin_menu'), 20);
         add_action('admin_init', array($this, 'register_settings'));
         add_action('wp_loaded', array($this, 'save_email'));
-        add_action('post_updated',array($this,'send_newsletter'));
+        //add_action('post_updated',array($this,'send_newsletter'));
+        add_action('post_updated',array($this,'wppu_select_subscriber'));
         add_action('wp_loaded',array($this,'unsubscribe'));
 
     }
@@ -42,12 +43,20 @@ class thfo_Newsletter
     {
         if (isset($_POST['thfo_newsletter_email']) && !empty($_POST['thfo_newsletter_email'])) {
             global $wpdb;
-            $email = $_POST['thfo_newsletter_email'];
+            $email = $_POST['email'];
+	        if(isset($_POST['id'])) {
+		        $id = $_POST['id'];
+	        } else {
+		        $id = 0;
+	        }
 
             $row = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}thfo_newsletter_email WHERE email = '$email'");
-            if (is_null($row)) {
-                $wpdb->insert("{$wpdb->prefix}thfo_newsletter_email", array('email' => $email));
-            }
+	        $wpdb->insert("{$wpdb->prefix}thfo_newsletter_email", array('email' => $email, 'post_id' => $id));
+/*            if (is_null($row)) {
+                $wpdb->insert("{$wpdb->prefix}thfo_newsletter_email", array('email' => $email, 'post_id' => $id));
+            } else {
+	            $wpdb->update("{$wpdb->prefix}thfo_newsletter_email", array('email' => $email, 'post_id' => $id), array('email' => $email));
+            }*/
         }
     }
 
@@ -141,38 +150,51 @@ class thfo_Newsletter
         }
 
     }
+	public function wppu_select_subscriber(){
+		$id = get_the_ID();
+		global $wpdb;
+		$subscribers = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}thfo_newsletter_email");
+		foreach ($subscribers as $subscriber){
+			if ($subscriber->post_id == '0'){
+				$recipient = $subscriber->email;
+				$this->send_newsletter($recipient, $id);
+			}
+			if ( $subscriber->post_id == $id ){
+				$recipient = $subscriber->email;
+				$this->send_newsletter($recipient, $id);
+			}
+		}
+	}
 
 
-    public function send_newsletter()
-    {
+    public function send_newsletter($recipient, $id){
+	    $url = get_permalink($id);
         $post_type = get_post_type(get_the_ID());
         $post = get_option('thfo_post_type');
 	    $sender = get_option('thfo_newsletter_sender');
 	    $sender_mail = get_option('thfo_newsletter_sender_mail');
 
-        if (isset($post) && $post == $post_type) {
-            global $wpdb;
-            $recipients = $wpdb->get_results("SELECT email FROM {$wpdb->prefix}thfo_newsletter_email");
-            foreach ($recipients as $_recipient) {
-                $object = get_option('thfo_newsletter_object', 'Newsletter');
-                $content = apply_filters('the_content', get_option('thfo_newsletter_content'));
-                $content .= '<p>' . __('To unsubscribe to this mail please follow this link: ', 'wp-post-updated');
-                echo esc_url(home_url('/')) . '<p>';
-                $content .= '<a href="'.home_url('wppu-unsubscribe').'" >'. __('Unsubscribe','wp-post-updated').'</a>';
-                $sender = get_option('thfo_newsletter_sender', 'no-reply@example.com');
-                $headers[] = 'Content-Type: text/html; charset=UTF-8';
+	    if ( isset( $post ) && $post == $post_type ) {
+		    $object  = get_option( 'thfo_newsletter_object', 'Newsletter' );
+		    //$content = apply_filters( 'the_content', get_option( 'thfo_newsletter_content' ) );
+		    $content = get_option( 'thfo_newsletter_content' );
+		    $content .= '<br /><a href="' . $url .' " >'. $url .'</a>';
+		    $content .= '<p>' . __( 'To unsubscribe to this mail please follow this link: ', 'wp-post-updated' );
+		    echo esc_url( home_url( '/' ) ) . '<p>';
+		    $content .= '<a href="' . home_url( 'wppu-unsubscribe' ) . '" >' . __( 'Unsubscribe', 'wp-post-updated' ) . '</a>';
+		    $sender    = get_option( 'thfo_newsletter_sender', 'no-reply@example.com' );
+		    $headers[] = 'Content-Type: text/html; charset=UTF-8';
 
-	            $headers[] = 'From:'. $sender.'<'.$sender_mail.'>';
-	            //$headers[] = 'From: ' . $sender;
-                $result = wp_mail($_recipient->email, $object, $content, $headers);
+		    $headers[] = 'From:' . $sender . '<' . $sender_mail . '>';
+		    //$headers[] = 'From: ' . $sender;
+		    $result = wp_mail( $recipient, $object, $content, $headers );
 
-                remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
+		    remove_filter( 'wp_mail_content_type', 'set_html_content_type' );
 
-                function set_html_content_type() {
-                    return 'text/html';
-                }
-            }
-        }
+/*		    function set_html_content_type() {
+			    return 'text/html';
+		    }*/
+	    }
     }
 
     public function unsubscribe()

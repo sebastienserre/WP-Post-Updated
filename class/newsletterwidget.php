@@ -42,13 +42,13 @@ class thfo_Newsletter_Widget extends WP_Widget
 
             <p>
 
-                <label for="thfo_newsletter_email">Votre email :</label>
+                <label for="email">Votre email :</label>
 
-                <input id="thfo_newsletter_email" name="thfo_newsletter_email" type="email"/>
+                <input id="email" name="email" type="email"/>
 
             </p>
 
-            <input type="submit"/>
+            <input name="thfo_newsletter_email" type="submit"/>
 
         </form>
 

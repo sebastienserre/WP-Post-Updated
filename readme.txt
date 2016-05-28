@@ -6,7 +6,7 @@ Donate link: https://www.paypal.me/sebastienserre
 Tags: update, post, mail, subscription, notifier, status
 Requires at least: 3.9
 Tested up to: 4.5
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPL V2 or later
 
 == Description ==
@@ -14,10 +14,10 @@ WP Post Updated will allow your subscriber to receive a mail when an post is upd
 In the back-office, Admin can setup the post Type to follow
 
 == Installation ==
-*1- unzip
-*2- upload to wp-content/plugin
-*3- Go to your dashboard to activate it
-*4- have fun!
+* 1- unzip
+* 2- upload to wp-content/plugin
+* 3- Go to your dashboard to activate it
+* 4- have fun!
 
 == Frequently Asked Questions ==
 = How to have a subscription field in my website? =
@@ -41,20 +41,13 @@ use automatic upgrade
 
 == Changelog ==
 * 1.2.0 add a subscrition field by mail on each post
-*1.1.13 uploading a fatal error is a wrong idea!
-
-*1.1.12 Page title appeared again modificated!
-
-*1.1.11 code format
-
-*1.1.10 remove page title
-
-*1.1.8 bugfix
-
-*1.1.7.1 Add text editor for content email
-
-*1.1.0 Add Link to unsubscribe
+* 1.1.13 uploading a fatal error is a wrong idea!
+* 1.1.12 Page title appeared again modificated!
+* 1.1.11 code format
+* 1.1.10 remove page title
+* 1.1.8 bugfix
+* 1.1.7.1 Add text editor for content email
+* 1.1.0 Add Link to unsubscribe
       Add HTML mail format support
-
-*1.0.0 Initial version
+* 1.0.0 Initial version
        Only allow Admin to select a Post Type to follow

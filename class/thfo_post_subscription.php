@@ -19,31 +19,31 @@ class thfo_post_subscription {
 	 * @return string
 	 */
 
-	public function thfo_add_subscription_field($content) {
-		$type        = get_option( 'thfo_post_type' );
+	public function thfo_add_subscription_field( $content ) {
+		$type          = get_option( 'thfo_post_type' );
 		$cur_post_type = get_post_type();
 		$i             = 0;
 
-			if ( in_array( $cur_post_type, $type, true ) ) {
-				$content .= $cur_post_type;
-				$content .= '<div class="thfo_mail">';
-				$content .= '<p>' . __( 'Want to be kept informed?', 'wp-post-updated' ) . '</p>';
-				$content .= '<form method="post">';
-				$content .= '<input name="email" type="email" placeholder="' . __( 'Please enter your email here', 'wp-post-updated' ) . '" >';
-				$content .= '<input name="id" type="text" value=" ' . get_the_id() . ' " hidden > ';
-				$content .= '<input name="thfo_newsletter_email" type="submit">';
-				$content .= '</form>';
-				$content .= '</div>';
+		if ( in_array( $cur_post_type, $type, true ) ) {
+			$content .= $cur_post_type;
+			$content .= '<div class="thfo_mail">';
+			$content .= '<p>' . __( 'Want to be kept informed?', 'wp-post-updated' ) . '</p>';
+			$content .= '<form method="post">';
+			$content .= '<input name="email" type="email" placeholder="' . __( 'Please enter your email here', 'wp-post-updated' ) . '" >';
+			$content .= '<input name="id" type="text" value=" ' . get_the_id() . ' " hidden > ';
+			$content .= '<input name="thfo_newsletter_email" type="submit">';
+			$content .= '</form>';
+			$content .= '</div>';
 
-				$content = apply_filters( 'thfo_subcription_form', $content );
+			$content = apply_filters( 'thfo_subcription_form', $content );
 
-				$i ++;
+			$i ++;
 
-				return $content;
-
-			}
+			return $content;
 
 		}
+
+	}
 
 
 

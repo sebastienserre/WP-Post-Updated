@@ -27,7 +27,7 @@ class thfo_post_subscription {
 			return false;
 		} else {
 			if ( in_array( $cur_post_type, $type, true ) ) {
-				$content .= '<div class="thfo_mail">';
+				$content = '<div class="thfo_mail">';
 				$content .= '<p>' . __( 'Want to be kept informed?', 'wp-post-updated' ) . '</p>';
 				$content .= '<form method="post">';
 				$content .= '<input name="email" type="email" placeholder="' . __( 'Please enter your email here', 'wp-post-updated' ) . '" >';
@@ -43,9 +43,9 @@ class thfo_post_subscription {
 				return $content;
 
 			}
-
-
+			
 		}
+		
 	}
 
 

@@ -40,6 +40,7 @@ use automatic upgrade
 4. Subscription widget
 
 == Changelog ==
+* 1.3.1 Remove subscription fields from home (if a page is declared as Homepage)
 * 1.3.0 can select several cpt to be followed
 * 1.2.0 add a subscrition field by mail on each post
 * 1.1.13 uploading a fatal error is a wrong idea!

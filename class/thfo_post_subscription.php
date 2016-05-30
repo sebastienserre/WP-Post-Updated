@@ -24,10 +24,10 @@ class thfo_post_subscription {
 		$cur_post_type = get_post_type();
 		$i             = 0;
 		if ( is_home() || is_front_page() ) {
-			return false;
+			return $content;
 		} else {
 			if ( in_array( $cur_post_type, $type, true ) ) {
-				$content = '<div class="thfo_mail">';
+				$content .= '<div class="thfo_mail">';
 				$content .= '<p>' . __( 'Want to be kept informed?', 'wp-post-updated' ) . '</p>';
 				$content .= '<form method="post">';
 				$content .= '<input name="email" type="email" placeholder="' . __( 'Please enter your email here', 'wp-post-updated' ) . '" >';
@@ -36,7 +36,7 @@ class thfo_post_subscription {
 				$content .= '</form>';
 				$content .= '</div>';
 
-				$content = apply_filters( 'thfo_subcription_form', $content );
+				//$content = apply_filters( 'thfo_subcription_form', $content );
 
 				$i ++;
 
@@ -45,7 +45,7 @@ class thfo_post_subscription {
 			}
 			
 		}
-		
+		echo $content;
 	}
 
 

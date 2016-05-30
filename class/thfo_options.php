@@ -75,17 +75,26 @@ class thfo_options
        <?php
     }
 
+
     public function select_html()
     {
-    $post_types = get_post_types('', 'names');
-        ?>
-           <?php foreach ($post_types as $post_type) {
-        $type = get_option('thfo_post_type');
-        ?>
-                <input type="radio" name="<?php echo 'thfo_post_type'; ?>" value="<?php echo $post_type; ?>" <?php if(!empty($type)&& $type== $post_type) { echo 'checked=checked';} ?>><?php echo $post_type; ?>
+	    $post_types = get_post_types('', 'names');
+	    $type = get_option('thfo_post_type');
+	    $i = 0;
 
-            <?php } ?>
-        <?php
+	    foreach ($post_types as $post_type) {
+		    if ( !empty($type['key-'. $i]) && $type['key-'. $i] === $post_type){
+
+			    $checkbox = ' <input type="checkbox" name ="thfo_post_type[key-'. $i .']" value = "' . $post_type .'" checked /> '.$post_type.'<br />';
+
+		    } else {
+
+			    $checkbox = ' <input type="checkbox" name ="thfo_post_type[key-'. $i .']" value = "' . $post_type .'"   />'.$post_type.' <br /> ';
+		    }
+
+		    echo $checkbox;
+		    $i++ ;
+	    }
     }
 
 

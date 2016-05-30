@@ -156,7 +156,7 @@ class thfo_Newsletter
 		$subscribers = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}thfo_newsletter_email");
 		foreach ($subscribers as $subscriber){
 			if ($subscriber->post_id == '0'){
-				$recipient = $subscriber->email;
+					$recipient = $subscriber->email;
 				$this->send_newsletter($recipient, $id);
 			}
 			if ( $subscriber->post_id == $id ){

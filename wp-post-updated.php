@@ -3,7 +3,7 @@
 Plugin Name: WP Post Updated
 Plugin URI: http://www.thivinfo.com
 Description: Send a mail when a post is updated
-Version: 1.3.3
+Version: 1.3.4
 Author: Sébastien Serre
 Author URI: http://www.thivinfo.com
 License: GPL2
@@ -40,7 +40,7 @@ class thfo_Plugin
 	    add_action( 'admin_init', array($this, 'wppu_add_column') );
 	    add_action( 'admin_init', array($this, 'wppu_register_admin_style') );
 
-	    define( 'PLUGIN_VERSION','1.2.0' );
+	    define( 'PLUGIN_VERSION','1.3.4' );
     }
 
 	public function wppu_add_column() {

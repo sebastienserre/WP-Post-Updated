@@ -21,8 +21,7 @@ class thfo_post_subscription {
 
 	public function thfo_add_subscription_field( $content ) {
 		$type          = get_option( 'thfo_post_type' );
-		$cur_post_type = get_post_type();
-		$i             = 0;
+		$cur_post_type = get_post_type();           = 0;
 		if ( is_home() || is_front_page() ) {
 			return $content;
 		} else {
@@ -38,14 +37,11 @@ class thfo_post_subscription {
 
 				//$content = apply_filters( 'thfo_subcription_form', $content );
 
-				$i ++;
-
 				return $content;
 
 			}
 			
 		}
-		echo $content;
 	}
 
 
